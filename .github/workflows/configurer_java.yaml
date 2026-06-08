@@ -28,8 +28,15 @@ jobs:
           echo 'Version de maven:'
           mvn -version
 
-#      - name: Construire avec Maven
-#        run: mvn -B clean package -DskipTests
+      - name: Récupérer le code applicatif du dépôt
+        uses: actions/checkout@v5
+
+      - name: liste des fichiers après opérations
+        run: ls -al
+
+#     - name: Construire avec Maven
+#       run: mvn -B clean package -DskipTests
+
 
 
 #      - name: Sauvegarder les artefacts
