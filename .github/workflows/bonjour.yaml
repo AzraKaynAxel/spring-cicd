@@ -1,5 +1,4 @@
 name: Exemple Bonjour
-run-name: Bonjour
 
 on:
   push:
@@ -13,5 +12,5 @@ jobs:
       - name: Afficher Bonjour
         run: echo "Bonjour"
 
-      - name: J'affiche les fichier du workkflows
-        run: find .
+      - name: Liste des fichiers
+        run: ls -al
