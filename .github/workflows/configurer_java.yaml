@@ -18,11 +18,16 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
+      - name: Afficher la version de JAVA
+        run: java -version
+
       - name: Construire avec Maven
         run: mvn -B clean package -DskipTests
 
-      - name: Sauvegarder les artefacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-artifact
-          path: target/*.jar
+      - name: Afficher la version de maven
+        run: mvn -version
+#      - name: Sauvegarder les artefacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: java-artifact
+#          path: target/*.jar
