@@ -4,28 +4,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  affichage:
+  configurer:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupérer le code soure
-        uses: actions/checkout@v4
-
       - name: Configurer JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: 'maven'
 
-      - name: Afficher la version de JAVA
-        run: java -version
+#      - name: Afficher la version de JAVA
+#        run: java -version
 
-      - name: Construire avec Maven
-        run: mvn -B clean package -DskipTests
+#      - name: Afficher la version de maven
+#        run: mvn -version
 
-      - name: Afficher la version de maven
-        run: mvn -version
+      # Identique à ce qui ce passe au dessus
+      - name: Afficher les versions des outils
+        run: |
+          echo 'Version de java:'
+          java -version
+          echo 'Version de maven:'
+          mvn -version
+
+#      - name: Construire avec Maven
+#        run: mvn -B clean package -DskipTests
+
+
 #      - name: Sauvegarder les artefacts
 #        uses: actions/upload-artifact@v4
 #        with:
