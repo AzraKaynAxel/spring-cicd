@@ -1,6 +1,8 @@
 name: Mise en place de CodeQL
 
-on: ["push"]
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
   codeql:
