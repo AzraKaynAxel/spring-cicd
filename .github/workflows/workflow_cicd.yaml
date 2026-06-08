@@ -10,7 +10,7 @@ jobs:
       - name: Initialiser CodeQL
         uses: github/codeql-action/init@v4
         with:
-          langauges: java-kotlin
+          languages: java-kotlin
 
       - name: Construire avec Maven
         run: mvn -B clean verify -Dspring.profiles.active=test -Dmaven.test.failure.ignore=true
