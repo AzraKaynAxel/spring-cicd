@@ -1,0 +1,17 @@
+name: Mise en place de JaCoCo
+
+on: ["push"]
+
+jobs:
+  jacoco:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Construire avec Maven
+        run: mvn -B clean verify -Dispring.profiles.active=test
+
+      - name: Sauvegarde du rapport JaCoCo
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
