@@ -1,17 +1,30 @@
-name: Mise en place de JaCoCo
+name: Mise en place de CodeQL
 
 on: ["push"]
 
 jobs:
-  jacoco:
+  codeql:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Construire avec Maven
-        run: mvn -B clean verify -Dispring.profiles.active=test
-
-      - name: Sauvegarde du rapport JaCoCo
-        uses: actions/upload-artifact@v4
+      - name: Initialiser CodeQL
+        uses: github/codeql-action/init@v4
         with:
-          name: jacoco-report
-          path: target/site/jacoco/
+          langauges: java-kotlin
+
+      - name: Construire avec Maven
+        run: mvn -B clean verify -Dspring.profiles.active=test -Dmaven.test.failure.ignore=true
+
+      - name: Analyse avec CodeQL
+        uses: github/codeql-action/analyze@v4
+
+
+
+#      - name: Initialiser CodeQL
+#        run: mvn -B clean verify -Dspring.profiles.active=test
+#
+#      - name: Sauvegarde du rapport JaCoCo
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: jacoco-report
+#          path: target/site/jacoco/
