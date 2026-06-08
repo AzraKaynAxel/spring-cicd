@@ -1,4 +1,4 @@
-name: Mise en place de CodeQL
+name: Mise en place de CodeQL&JaCoCo
 
 on:
   workflow_dispatch:
@@ -32,13 +32,8 @@ jobs:
       - name: Analyse avec CodeQL
         uses: github/codeql-action/analyze@v4
 
-
-
-#      - name: Initialiser CodeQL
-#        run: mvn -B clean verify -Dspring.profiles.active=test
-#
-#      - name: Sauvegarde du rapport JaCoCo
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: jacoco-report
-#          path: target/site/jacoco/
+      - name: Sauvegarde du rapport JaCoCo
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
