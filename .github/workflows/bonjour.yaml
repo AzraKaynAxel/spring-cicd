@@ -14,4 +14,4 @@ jobs:
         run: echo "Bonjour"
 
       - name: J'affiche les fichier du workkflows
-        run: ls -la
+        run: ls
