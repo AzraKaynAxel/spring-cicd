@@ -236,7 +236,8 @@
         <module name="NonEmptyAtclauseDescription"/>
         <module name="InvalidJavadocPosition"/>
         <module name="JavadocTagContinuationIndentation"/>
-        <!-- <module name="SummaryJavadoc"></module> -->
+        <module name="SummaryJavadoc">
+        </module>
         <module name="JavadocParagraph"/>
         <module name="RequireEmptyLineBeforeBlockTagGroup"/>
         <module name="AtclauseOrder">

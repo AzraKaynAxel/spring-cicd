@@ -1,4 +1,4 @@
-name: Mise en place de CodeQL & JaCoCo & Checkstyle
+name: Mise en place de l'intégration continue
 
 on:
   workflow_dispatch:
@@ -21,6 +21,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      # Tp5 : Ajouter l'utilisation de CodeQL
       - name: Initialiser CodeQL
         uses: github/codeql-action/init@v4
         with:
@@ -35,14 +36,23 @@ jobs:
       - name: Analyse avec CodeQL
         uses: github/codeql-action/analyze@v4
 
+      # Tp6 : Ajouter l'utilisation de JaCoCo
       - name: Sauvegarde du rapport JaCoCo
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
           path: target/site/jacoco/
 
+      # Tp7 : Ajouter l'utilisation de Checkstyle
       - name: Publier le rapport Checkstyle
         uses: actions/upload-artifact@v4
         with:
           name: rapport-checkstyle
           path: target/site/
+
+      # Tp8 : Ajouter l'utilisation de SpotBugs
+      - name: Publier le rapport SpotBugs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-spotbugs
+          path: target/spotbugsXml.xml
