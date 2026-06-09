@@ -1,4 +1,4 @@
-name: Mise en place de CodeQL&JaCoCo
+name: Mise en place de CodeQL & JaCoCo & Checkstyle
 
 on:
   workflow_dispatch:
@@ -29,6 +29,9 @@ jobs:
       - name: Construire avec Maven
         run: mvn -B clean verify -Dspring.profiles.active=test -Dmaven.test.failure.ignore=true
 
+      - name: Génère le site Maven
+        run: mvn site
+
       - name: Analyse avec CodeQL
         uses: github/codeql-action/analyze@v4
 
@@ -37,3 +40,9 @@ jobs:
         with:
           name: jacoco-report
           path: target/site/jacoco/
+
+      - name: Publier le rapport Checkstyle
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-checkstyle
+          path: target/site/
